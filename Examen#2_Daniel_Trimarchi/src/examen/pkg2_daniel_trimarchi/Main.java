@@ -8,6 +8,8 @@ package examen.pkg2_daniel_trimarchi;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -17,6 +19,7 @@ public class Main extends javax.swing.JFrame {
 
     adminUsuario au;
     adminAlbum aa;
+    int actual = 0;
 
     /**
      * Creates new form Main
@@ -44,6 +47,12 @@ public class Main extends javax.swing.JFrame {
     private void initComponents() {
 
         log = new javax.swing.JDialog();
+        jLabel15 = new javax.swing.JLabel();
+        pass_en = new javax.swing.JTextField();
+        us_en = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        jToggleButton8 = new javax.swing.JToggleButton();
         guardar = new javax.swing.JDialog();
         nom = new javax.swing.JTextField();
         us = new javax.swing.JTextField();
@@ -80,6 +89,17 @@ public class Main extends javax.swing.JFrame {
         jToggleButton2 = new javax.swing.JToggleButton();
         jToggleButton3 = new javax.swing.JToggleButton();
         jTextField1 = new javax.swing.JTextField();
+        programa = new javax.swing.JDialog();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        main_tree = new javax.swing.JTree();
+        jLabel18 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton4 = new javax.swing.JToggleButton();
         jToggleButton5 = new javax.swing.JToggleButton();
@@ -88,15 +108,71 @@ public class Main extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel15.setText("Log In");
+
+        jLabel16.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jLabel16.setText("Password:");
+
+        jLabel17.setFont(new java.awt.Font("Tempus Sans ITC", 1, 14)); // NOI18N
+        jLabel17.setText("Usuario");
+
+        jToggleButton8.setText("Entrar");
+        jToggleButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton8ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout logLayout = new javax.swing.GroupLayout(log.getContentPane());
         log.getContentPane().setLayout(logLayout);
         logLayout.setHorizontalGroup(
             logLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 438, Short.MAX_VALUE)
+            .addGroup(logLayout.createSequentialGroup()
+                .addGroup(logLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(logLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(29, 29, 29)
+                        .addComponent(pass_en, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, logLayout.createSequentialGroup()
+                        .addGap(114, 114, 114)
+                        .addComponent(us_en, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(logLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logLayout.createSequentialGroup()
+                        .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(134, 134, 134))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, logLayout.createSequentialGroup()
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(94, 94, 94))))
+            .addGroup(logLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(logLayout.createSequentialGroup()
+                    .addGap(20, 20, 20)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(214, Short.MAX_VALUE)))
         );
         logLayout.setVerticalGroup(
             logLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 349, Short.MAX_VALUE)
+            .addGroup(logLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addComponent(us_en, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40)
+                .addGroup(logLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(pass_en, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(28, 28, 28)
+                .addComponent(jToggleButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(40, 40, 40))
+            .addGroup(logLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(logLayout.createSequentialGroup()
+                    .addGap(110, 110, 110)
+                    .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(196, Short.MAX_VALUE)))
         );
 
         guardar.getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -220,6 +296,11 @@ public class Main extends javax.swing.JFrame {
         });
 
         jToggleButton3.setText("Modificar");
+        jToggleButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton3ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout usuarioLayout = new javax.swing.GroupLayout(usuario.getContentPane());
         usuario.getContentPane().setLayout(usuarioLayout);
@@ -229,27 +310,109 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(usuarioLayout.createSequentialGroup()
-                .addGap(121, 121, 121)
+                .addGap(88, 88, 88)
                 .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(120, 120, 120)
                 .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(115, 115, 115))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         usuarioLayout.setVerticalGroup(
             usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(usuarioLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGroup(usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(usuarioLayout.createSequentialGroup()
-                        .addGap(29, 29, 29)
-                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(usuarioLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
 
         jTextField1.setText("jTextField1");
+
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Spotify");
+        main_tree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane2.setViewportView(main_tree);
+
+        jLabel18.setFont(new java.awt.Font("Tempus Sans ITC", 1, 24)); // NOI18N
+        jLabel18.setText("MENU PRINCIPAL");
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(20, 20, 20)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("Explorar", jPanel1);
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 362, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Crear PlayList", jPanel2);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 627, Short.MAX_VALUE)
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 362, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("Ver PlayList", jPanel3);
+
+        jMenu1.setText("Online");
+
+        jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.CTRL_MASK));
+        jMenuItem1.setText("Salir");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        jMenuBar1.add(jMenu1);
+
+        programa.setJMenuBar(jMenuBar1);
+
+        javax.swing.GroupLayout programaLayout = new javax.swing.GroupLayout(programa.getContentPane());
+        programa.getContentPane().setLayout(programaLayout);
+        programaLayout.setHorizontalGroup(
+            programaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1)
+        );
+        programaLayout.setVerticalGroup(
+            programaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -287,6 +450,11 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 182, 120, 62));
 
         jToggleButton7.setText("Log in");
+        jToggleButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton7ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jToggleButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 182, 89, 62));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -314,7 +482,7 @@ public class Main extends javax.swing.JFrame {
         us.setText("");
         pass.setText("");
         edad.setText("");
-       Usuario temp = new Usuario(nombre, ed, user, password);
+        Usuario temp = new Usuario(nombre, ed, user, password);
         au.setPersona(temp);
         au.escribirArchivo();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -404,6 +572,7 @@ public class Main extends javax.swing.JFrame {
     private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
         try {
             au.cargarArchivo();
+            aa.cargarArchivo();
             JOptionPane.showMessageDialog(null, "Se Cargo Exitosmente");
         } catch (Exception e) {
             e.printStackTrace();
@@ -412,11 +581,33 @@ public class Main extends javax.swing.JFrame {
 
     private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
         // TODO add your handling code here:
+        us_tabla.setModel(new javax.swing.table.DefaultTableModel(
+                new Object[][]{},
+                new String[]{
+                    "Nombre", "Usuario", "Password", "Edad"
+                }
+        ) {
+            Class[] types = new Class[]{
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean[]{
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types[columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit[columnIndex];
+            }
+        });
+
         DefaultTableModel modelo = (DefaultTableModel) us_tabla.getModel();
         for (int i = 0; i < au.getListaus().size(); i++) {
-        Usuario tem=au.getListaus().get(i);
-           Object [] e={tem.getNombre(),tem.getUser(),tem.getPassword(),tem.getEdad()};
-           modelo.addRow(e);
+            Usuario tem = au.getListaus().get(i);
+            Object[] e = {tem.getNombre(), tem.getUser(), tem.getPassword(), tem.getEdad()};
+            modelo.addRow(e);
         }
         usuario.setModal(true);
         usuario.pack();
@@ -427,14 +618,158 @@ public class Main extends javax.swing.JFrame {
     private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
         // TODO add your handling code here:
         DefaultTableModel modelo = (DefaultTableModel) us_tabla.getModel();
-        if(us_tabla.getSelectedRow()>-1){
-            int row=us_tabla.getSelectedRow();
-           String nombre=modelo.getValueAt(row,0).toString();
-           String edad=modelo.getValueAt(row,3).toString();
-           String password=modelo.getValueAt(row,2).toString();
-           String user=modelo.getValueAt(row,1).toString();
+        if (us_tabla.getSelectedRow() > -1) {
+            int row = us_tabla.getSelectedRow();
+            String nombre = modelo.getValueAt(row, 0).toString();
+            String edad = modelo.getValueAt(row, 3).toString();
+            String password = modelo.getValueAt(row, 2).toString();
+            String user = modelo.getValueAt(row, 1).toString();
+            for (int i = 0; i < au.getListaus().size(); i++) {
+                Usuario tem = au.getListaus().get(i);
+                if (tem.getNombre().equals(nombre) && tem.getUser().equals(user) && tem.getPassword().equals(password)) {
+                    au.getListaus().remove(i);
+                }
+            }
+            au.escribirArchivo();
+            au.cargarArchivo();
+            us_tabla.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    new String[]{
+                        "Nombre", "Usuario", "Password", "Edad"
+                    }
+            ) {
+                Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                };
+                boolean[] canEdit = new boolean[]{
+                    false, false, false, false
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types[columnIndex];
+                }
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            });
+            modelo = (DefaultTableModel) us_tabla.getModel();
+            for (int i = 0; i < au.getListaus().size(); i++) {
+                Usuario tem = au.getListaus().get(i);
+                Object[] e = {tem.getNombre(), tem.getUser(), tem.getPassword(), tem.getEdad()};
+                modelo.addRow(e);
+            }
         }
     }//GEN-LAST:event_jToggleButton2ActionPerformed
+
+    private void jToggleButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton3ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) us_tabla.getModel();
+        if (us_tabla.getSelectedRow() > -1) {
+            String n_nom = JOptionPane.showInputDialog(usuario, "Ingrese el Nuevo Nombre");
+            String pass = JOptionPane.showInputDialog(usuario, "Ingrese el Nuevo Password");
+            String Uss = JOptionPane.showInputDialog(usuario, "Ingrese el Nuevo Usuario");
+
+            int row = us_tabla.getSelectedRow();
+            String nombre = modelo.getValueAt(row, 0).toString();
+            String edad = modelo.getValueAt(row, 3).toString();
+            String password = modelo.getValueAt(row, 2).toString();
+            String user = modelo.getValueAt(row, 1).toString();
+            for (int i = 0; i < au.getListaus().size(); i++) {
+                Usuario tem = au.getListaus().get(i);
+                if (tem.getNombre().equals(nombre) && tem.getUser().equals(user) && tem.getPassword().equals(password)) {
+                    au.getListaus().get(i).setNombre(n_nom);
+                    au.getListaus().get(i).setUser(Uss);
+                    au.getListaus().get(i).setPassword(pass);
+                }
+            }
+            au.escribirArchivo();
+            au.cargarArchivo();
+            us_tabla.setModel(new javax.swing.table.DefaultTableModel(
+                    new Object[][]{},
+                    new String[]{
+                        "Nombre", "Usuario", "Password", "Edad"
+                    }
+            ) {
+                Class[] types = new Class[]{
+                    java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                };
+                boolean[] canEdit = new boolean[]{
+                    false, false, false, false
+                };
+
+                public Class getColumnClass(int columnIndex) {
+                    return types[columnIndex];
+                }
+
+                public boolean isCellEditable(int rowIndex, int columnIndex) {
+                    return canEdit[columnIndex];
+                }
+            });
+            modelo = (DefaultTableModel) us_tabla.getModel();
+            for (int i = 0; i < au.getListaus().size(); i++) {
+                Usuario tem = au.getListaus().get(i);
+                Object[] e = {tem.getNombre(), tem.getUser(), tem.getPassword(), tem.getEdad()};
+                modelo.addRow(e);
+            }
+        }
+    }//GEN-LAST:event_jToggleButton3ActionPerformed
+
+    private void jToggleButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton7ActionPerformed
+        // TODO add your handling code here:
+        log.setModal(true);
+        log.pack();
+        log.setAlwaysOnTop(true);
+        log.setVisible(true);
+    }//GEN-LAST:event_jToggleButton7ActionPerformed
+
+    private void jToggleButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton8ActionPerformed
+        // TODO add your handling code here:
+        DefaultTreeModel modelo=(DefaultTreeModel)main_tree.getModel();
+        DefaultMutableTreeNode root=new DefaultMutableTreeNode("Spotify");
+        modelo.setRoot(root);
+        DefaultMutableTreeNode raiz=(DefaultMutableTreeNode)modelo.getRoot();      
+        au.cargarArchivo();
+        aa.cargarArchivo();
+        String uss = us_en.getText();
+        String pas = pass_en.getText();
+        int actual = 0;
+        boolean encontrado = false;
+        for (int i = 0; i < au.getListaus().size(); i++) {
+            Usuario tem = au.getListaus().get(i);
+ 
+            if (tem.getUser().equals(uss) && tem.getPassword().equals(pas)) {
+                this.actual = actual;
+                encontrado = true;
+
+            }
+            actual++;
+        }
+        if (encontrado == false) {
+            JOptionPane.showMessageDialog(log, "Usuario o Password Incorrecto");
+        } else {
+            us_en.setText("");
+            pass_en.setText("");
+            for(int i=0;i<aa.getListAlbum().size();i++){
+               Album tem=aa.getListAlbum().get(i);
+                    DefaultMutableTreeNode n=new DefaultMutableTreeNode(tem);
+               for(int j=0;j<tem.getCancion().size();j++){
+                   DefaultMutableTreeNode p=new DefaultMutableTreeNode(tem.getCancion().get(j));
+                   n.add(p);
+               }
+               raiz.add(n);
+            }
+            programa.setModal(true);
+            programa.pack();
+            programa.setAlwaysOnTop(true);
+            programa.setVisible(true);
+        }
+    }//GEN-LAST:event_jToggleButton8ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        programa.dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -492,6 +827,10 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -500,7 +839,15 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToggleButton jToggleButton2;
@@ -509,12 +856,18 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
     private javax.swing.JToggleButton jToggleButton7;
+    private javax.swing.JToggleButton jToggleButton8;
     private javax.swing.JDialog log;
+    private javax.swing.JTree main_tree;
     private javax.swing.JTextField ncancion;
     private javax.swing.JTextField nom;
     private javax.swing.JTextField pass;
+    private javax.swing.JTextField pass_en;
+    private javax.swing.JDialog programa;
     private javax.swing.JTextField us;
+    private javax.swing.JTextField us_en;
     private javax.swing.JTable us_tabla;
     private javax.swing.JDialog usuario;
     // End of variables declaration//GEN-END:variables
+
 }
