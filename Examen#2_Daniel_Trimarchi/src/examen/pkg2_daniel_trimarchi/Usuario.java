@@ -5,15 +5,19 @@
  */
 package examen.pkg2_daniel_trimarchi;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 /**
  *
  * @author X
  */
-public class Usuario {
+public class Usuario implements Serializable{
     private String nombre;
     private String edad;
     private String user;
     private String password;
+     private ArrayList<Cancion> playlist=new ArrayList<>();
 
     public Usuario() {
     }
