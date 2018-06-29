@@ -7,6 +7,7 @@ package examen.pkg2_daniel_trimarchi;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -26,6 +27,11 @@ public class Main extends javax.swing.JFrame {
         aa = new adminAlbum("./albums.cbm");
         au.cargarArchivo();
         aa.cargarArchivo();
+        DefaultComboBoxModel modelo = (DefaultComboBoxModel) cb_album.getModel();
+        for (int i = 0; i < aa.getListAlbum().size(); i++) {
+            modelo.addElement(aa.getListAlbum().get(i));
+        }
+
     }
 
     /**
@@ -68,7 +74,11 @@ public class Main extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         duracion1 = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        jDialog5 = new javax.swing.JDialog();
+        usuario = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        us_tabla = new javax.swing.JTable();
+        jToggleButton2 = new javax.swing.JToggleButton();
+        jToggleButton3 = new javax.swing.JToggleButton();
         jTextField1 = new javax.swing.JTextField();
         jToggleButton1 = new javax.swing.JToggleButton();
         jToggleButton4 = new javax.swing.JToggleButton();
@@ -177,15 +187,66 @@ public class Main extends javax.swing.JFrame {
         jLabel14.setText("Duracion (Seg)");
         cancion.getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 218, 100, 40));
 
-        javax.swing.GroupLayout jDialog5Layout = new javax.swing.GroupLayout(jDialog5.getContentPane());
-        jDialog5.getContentPane().setLayout(jDialog5Layout);
-        jDialog5Layout.setHorizontalGroup(
-            jDialog5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        us_tabla.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Nombre", "Usuario", "Password", "Edad"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(us_tabla);
+
+        jToggleButton2.setText("Eliminar");
+        jToggleButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton2ActionPerformed(evt);
+            }
+        });
+
+        jToggleButton3.setText("Modificar");
+
+        javax.swing.GroupLayout usuarioLayout = new javax.swing.GroupLayout(usuario.getContentPane());
+        usuario.getContentPane().setLayout(usuarioLayout);
+        usuarioLayout.setHorizontalGroup(
+            usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 634, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(usuarioLayout.createSequentialGroup()
+                .addGap(121, 121, 121)
+                .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(115, 115, 115))
         );
-        jDialog5Layout.setVerticalGroup(
-            jDialog5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        usuarioLayout.setVerticalGroup(
+            usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(usuarioLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(usuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(usuarioLayout.createSequentialGroup()
+                        .addGap(29, 29, 29)
+                        .addComponent(jToggleButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(usuarioLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jToggleButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTextField1.setText("jTextField1");
@@ -194,6 +255,11 @@ public class Main extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jToggleButton1.setText("Usuarios");
+        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jToggleButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(37, 80, 89, 67));
 
         jToggleButton4.setText("Albums");
@@ -213,6 +279,11 @@ public class Main extends javax.swing.JFrame {
         getContentPane().add(jToggleButton5, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 80, -1, 67));
 
         jToggleButton6.setText("Cargar Usuarios");
+        jToggleButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jToggleButton6ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jToggleButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(189, 182, 120, 62));
 
         jToggleButton7.setText("Log in");
@@ -243,8 +314,7 @@ public class Main extends javax.swing.JFrame {
         us.setText("");
         pass.setText("");
         edad.setText("");
-        Usuario temp = new Usuario(nombre, ed, user, password);
-        adminUsuario au = new adminUsuario("./usuarios.cbm");
+       Usuario temp = new Usuario(nombre, ed, user, password);
         au.setPersona(temp);
         au.escribirArchivo();
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -309,10 +379,11 @@ public class Main extends javax.swing.JFrame {
                 Album alb = (Album) modelo.getSelectedItem();
                 String artista = c_art.getText();
                 String Cancion = ncancion.getText();
-                int dura = Integer.parseInt(genero.getText());
+                int dura = Integer.parseInt(duracion1.getText());
                 String gener = genero.getText();
                 Cancion temps = new Cancion(Cancion, artista, alb, dura, gener);
-                boolean existe=false;
+                alb.getCancion().add(temps);
+                boolean existe = false;
                 for (int i = 0; i < aa.getListAlbum().size(); i++) {
                     if (aa.getListAlbum().get(i).equals(alb)) {
                         existe = true;
@@ -320,12 +391,50 @@ public class Main extends javax.swing.JFrame {
                         aa.getListAlbum().get(i).getCancion().add(temps);
                     }
                 }
-                aa.getListAlbum().add(alb);
+                if (existe == false) {
+                    aa.getListAlbum().add(alb);
+                }
+                aa.escribirArchivo();
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jToggleButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton6ActionPerformed
+        try {
+            au.cargarArchivo();
+            JOptionPane.showMessageDialog(null, "Se Cargo Exitosmente");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_jToggleButton6ActionPerformed
+
+    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) us_tabla.getModel();
+        for (int i = 0; i < au.getListaus().size(); i++) {
+        Usuario tem=au.getListaus().get(i);
+           Object [] e={tem.getNombre(),tem.getUser(),tem.getPassword(),tem.getEdad()};
+           modelo.addRow(e);
+        }
+        usuario.setModal(true);
+        usuario.pack();
+        usuario.setAlwaysOnTop(true);
+        usuario.setVisible(true);
+    }//GEN-LAST:event_jToggleButton1ActionPerformed
+
+    private void jToggleButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton2ActionPerformed
+        // TODO add your handling code here:
+        DefaultTableModel modelo = (DefaultTableModel) us_tabla.getModel();
+        if(us_tabla.getSelectedRow()>-1){
+            int row=us_tabla.getSelectedRow();
+           String nombre=modelo.getValueAt(row,0).toString();
+           String edad=modelo.getValueAt(row,3).toString();
+           String password=modelo.getValueAt(row,2).toString();
+           String user=modelo.getValueAt(row,1).toString();
+        }
+    }//GEN-LAST:event_jToggleButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -377,7 +486,6 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JDialog jDialog5;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -392,8 +500,11 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JToggleButton jToggleButton1;
+    private javax.swing.JToggleButton jToggleButton2;
+    private javax.swing.JToggleButton jToggleButton3;
     private javax.swing.JToggleButton jToggleButton4;
     private javax.swing.JToggleButton jToggleButton5;
     private javax.swing.JToggleButton jToggleButton6;
@@ -403,5 +514,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTextField nom;
     private javax.swing.JTextField pass;
     private javax.swing.JTextField us;
+    private javax.swing.JTable us_tabla;
+    private javax.swing.JDialog usuario;
     // End of variables declaration//GEN-END:variables
 }

@@ -52,7 +52,7 @@ public class Album implements Serializable{
 
     @Override
     public String toString() {
-        return "Album{" + "artista=" + artista + ", nombre=" + nombre + '}';
+        return nombre;
     }
     
    

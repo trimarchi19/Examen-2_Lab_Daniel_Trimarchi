@@ -5,18 +5,20 @@
  */
 package examen.pkg2_daniel_trimarchi;
 
+import java.io.Serializable;
+
 /**
  *
  * @author X
  */
-public class Cancion {
+public class Cancion implements Serializable{
     private String nombre;
     private String artista;
     private Album album;
     private int duracin;
     private String genero;
 
-    public Cancion() {
+    public Cancion(){
     }
 
     public Cancion(String nombre, String artista, int duracin, String genero) {
