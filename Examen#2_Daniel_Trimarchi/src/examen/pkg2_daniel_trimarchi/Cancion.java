@@ -79,7 +79,7 @@ public class Cancion implements Serializable{
 
     @Override
     public String toString() {
-        return "Cancion{" + "nombre=" + nombre + ", artista=" + artista + ", album=" + album.getNombre() + '}';
+        return nombre ;
     }
     
 

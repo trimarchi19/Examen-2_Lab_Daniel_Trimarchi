@@ -17,7 +17,7 @@ public class Usuario implements Serializable{
     private String edad;
     private String user;
     private String password;
-     private ArrayList<Cancion> playlist=new ArrayList<>();
+     private ArrayList<Playlist> playlist=new ArrayList<>();
      private ArrayList<Cancion> fav=new ArrayList<>();
 
     public Usuario() {
@@ -62,11 +62,11 @@ public class Usuario implements Serializable{
         this.password = password;
     }
 
-    public ArrayList<Cancion> getPlaylist() {
+    public ArrayList<Playlist> getPlaylist() {
         return playlist;
     }
 
-    public void setPlaylist(ArrayList<Cancion> playlist) {
+    public void setPlaylist(ArrayList<Playlist> playlist) {
         this.playlist = playlist;
     }
 
