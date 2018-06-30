@@ -116,6 +116,7 @@ public class Main extends javax.swing.JFrame {
         label = new javax.swing.JLabel();
         label1 = new javax.swing.JLabel();
         time = new javax.swing.JLabel();
+        song = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -387,7 +388,7 @@ public class Main extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cb_play, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(9, 9, 9)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -456,7 +457,7 @@ public class Main extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(96, 96, 96)
                                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(80, Short.MAX_VALUE))
+                .addContainerGap(96, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,6 +510,9 @@ public class Main extends javax.swing.JFrame {
         time.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         time.setText("000");
         jPanel3.add(time, new org.netbeans.lib.awtextra.AbsoluteConstraints(458, 98, 90, 36));
+
+        song.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jPanel3.add(song, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 40, 250, 40));
 
         jTabbedPane1.addTab("Favoritas", jPanel3);
 
@@ -600,6 +604,7 @@ public class Main extends javax.swing.JFrame {
         Usuario temp = new Usuario(nombre, ed, user, password);
         au.setPersona(temp);
         au.escribirArchivo();
+        guardar.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jToggleButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton5ActionPerformed
@@ -632,13 +637,13 @@ public class Main extends javax.swing.JFrame {
             boolean existe = false;
             for (int i = 0; i < aa.getListAlbum().size(); i++) {
                 if (aa.getListAlbum().get(i).equals(ab)) {
-                    System.out.println("Este Album ya Existe");
                     existe = true;
                 }
             }
             if (existe == false) {
                 aa.getListAlbum().add(ab);
             }
+            album.dispose();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -670,7 +675,6 @@ public class Main extends javax.swing.JFrame {
                 for (int i = 0; i < aa.getListAlbum().size(); i++) {
                     if (aa.getListAlbum().get(i).equals(alb)) {
                         existe = true;
-                        System.out.println("ENtrooo y Encontro");
                         aa.getListAlbum().get(i).getCancion().add(temps);
                     }
                 }
@@ -679,6 +683,8 @@ public class Main extends javax.swing.JFrame {
                     //aa.getListAlbum().add(alb);
                 }
                 aa.escribirArchivo();
+                JOptionPane.showMessageDialog(cancion,"Se Creo Exitosamente la Cancion");
+                cancion.dispose();
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -946,6 +952,7 @@ public class Main extends javax.swing.JFrame {
                         if (barra.getValue() > 0) {
                             HR.stop();
                         }
+                        song.setText(c.getNombre());
                         barra.setValue(0);
                         barra.setMaximum(tiempo);
                         time.setText(String.valueOf(tiempo));
@@ -1013,11 +1020,14 @@ public class Main extends javax.swing.JFrame {
                     if (nodo_seleccionado.getUserObject() instanceof Cancion) {
                         DefaultMutableTreeNode n = new DefaultMutableTreeNode((Cancion) nodo_seleccionado.getUserObject());
                         raiz.add(n);
+                        au.getListaus().get(actual).getFav().add((Cancion) nodo_seleccionado.getUserObject());
 
                     }
                 }
             }
             modelo1.reload();
+            au.escribirArchivo();
+            au.cargarArchivo();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -1131,6 +1141,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JTree play_tre_play;
     private javax.swing.JTree play_tree;
     private javax.swing.JDialog programa;
+    private javax.swing.JLabel song;
     private javax.swing.JLabel time;
     private javax.swing.JTextField us;
     private javax.swing.JTextField us_en;
@@ -1142,14 +1153,16 @@ public void caragar_arboles() {
         mod.removeAllElements();
         DefaultTreeModel modelo = (DefaultTreeModel) main_tree.getModel();
         DefaultTreeModel modelo1 = (DefaultTreeModel) play_tree.getModel();
-        //  DefaultTreeModel modelo2 = (DefaultTreeModel) play_tre_play.getModel();
+        DefaultTreeModel modelo2 = (DefaultTreeModel) play_tre_play.getModel();
         DefaultMutableTreeNode root = new DefaultMutableTreeNode("Spotify");
         DefaultMutableTreeNode root2 = new DefaultMutableTreeNode("Spotify");
+        DefaultMutableTreeNode root3 = new DefaultMutableTreeNode("Favoritas");
         // modelo2.setRoot(root2);
         modelo.setRoot(root);
         modelo1.setRoot(root2);
         DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) modelo.getRoot();
         DefaultMutableTreeNode raiz2 = (DefaultMutableTreeNode) modelo1.getRoot();
+        DefaultMutableTreeNode raiz3 = (DefaultMutableTreeNode) modelo2.getRoot();
         for (int i = 0; i < aa.getListAlbum().size(); i++) {
             Album tem = aa.getListAlbum().get(i);
             DefaultMutableTreeNode n = new DefaultMutableTreeNode(tem);
@@ -1168,6 +1181,10 @@ public void caragar_arboles() {
                 p.add(g);
             }
             raiz2.add(p);
+        }
+        for(int j=0;j<tem.getFav().size();j++){
+            DefaultMutableTreeNode p = new DefaultMutableTreeNode(tem.getFav().get(j));
+            raiz3.add(p);
         }
         cb_play.setModel(mod);
         modelo.reload();
